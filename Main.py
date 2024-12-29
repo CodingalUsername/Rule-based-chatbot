@@ -6,7 +6,9 @@ init(autoreset=True)
 destinations = {
     "beaches": ["Bali", "Maldives", "Phuket"],
     "mountains": ["Swiss Alps", "Rocky Mountains", "Himalayas"],
+     "cities": ["Tokyo", "Paris", "New York"]
 }
+
 
 jokes = [
     "Why don't programmers like nature? Too many bugs!",
@@ -28,7 +30,7 @@ def help():
     print(Fore.LIGHTBLACK_EX + "Ask question or press exit to leave")
 
 def process_input(user_input):
-    user_input = user_input.strip().lower
+    user_input = user_input.strip().lower()
     user_input = re.sub(r'\s+', ' ',user_input)
     return user_input
 
@@ -39,12 +41,13 @@ def provide_recommendations():
     
     if preference in destinations:
         suggestion = random.choice(destinations[preference])
-        print(Fore.MAGENTA + F"How about visiting {suggestion}")
+        print(Fore.MAGENTA + f"How about visiting {suggestion}")
         print(Fore.YELLOW + "Do you like this suggestion Yes/No?")
         response = input(Fore.RED + "You: ").strip().lower()
-        if response == "Yes":
+
+        if response == "yes":
             print(Fore.CYAN + f"Have an amazing time in {suggestion}")
-        elif response == "No":
+        elif response == "no":
             print(Fore.BLUE + "No worries, let's find another place")
             provide_recommendations()
         else:
@@ -52,15 +55,15 @@ def provide_recommendations():
              provide_recommendations()
     else:
         print(Fore.LIGHTWHITE_EX + "Sorry I don't have any recommendations for that preference")
-        help()
+    help()
 
 def packing_tips():
     print(Fore.LIGHTGREEN_EX + "Where are you travelling to?")
-    destinations = input(Fore.CYAN + "You: ")
-    destinations = process_input(destinations)
+    destination = input(Fore.CYAN + "You: ")
+    destination = process_input(destination)
     print(Fore.LIGHTMAGENTA_EX + "How many days will u stay?")
     days = input(Fore.WHITE + "You: ")
-    print(Fore.LIGHTBLUE_EX + f"packing tips for {days} days in {destinations}")
+    print(Fore.LIGHTBLUE_EX + f"packing tips for {days} days in {destination}")
     print(Fore.CYAN + "pack clothing items")
     print(Fore.GREEN + "Don't forget travel adapters and chargers")
     print(Fore.YELLOW + f"Check Weather forecast before packing")
